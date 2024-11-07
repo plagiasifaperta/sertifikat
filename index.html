@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sertifikat Bebas Plagiasi - Fakultas Pertanian ULM</title>
+  <link id="favicon" rel="shortcut icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Additional CSS styling... */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    .background-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("background-image.jpg");
+      /* Ganti dengan nama file gambar yang sesuai */
+      background-size: cover;
+      filter: blur(5px);
+      /* Menambahkan efek blur */
+      z-index: -1;
+    }
+
+    .content {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      width: 100%;
+    }
+
+    #deteksi-data {
+      display: inline-block;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.7);
+      /* Menambahkan latar belakang transparan */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      /* Menambahkan shadow */
+
+      margin: 0 auto;
+      /* Mengatur posisi box card menjadi tengah */
+    }
+
+    #deteksi-data p {
+      word-wrap: break-word;
+      /* Memastikan teks dapat di-wrap secara otomatis */
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+      margin-top: 20px;
+      /* Memberi jarak antara box card dengan judul card */
+    }
+
+    .card {
+      width: 50%;
+      /* Mengatur lebar card hingga 55% dari lebar layar */
+      margin: 0 auto;
+      /* Mengatur posisi card menjadi tengah */
+      margin-top: 5%;
+      /* Memberi jarak antara box card dengan card */
+      background-color: rgba(73, 5, 5, 0.877);
+      /* Menambahkan latar belakang transparan */
+      padding-top: 20px;
+    }
+
+    .card-title {
+      text-align: center;
+      /* Mengatur posisi judul card di tengah */
+      color: rgba(255, 255, 255, 0.877);
+      /* Menambahkan latar belakang transparan */
+    }
+
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 10%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background-image"></div>
+  <div class="content">
+
+    <!-- Card -->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><img src="logo.png" class="center" alt="Universitas Lambung Mangkurat">Sertifikat Bebas Plagiasi<br>Fakultas Pertanian ULM</h5>
+
+        <div id="deteksi-data">
+          <!-- Data will be dynamically inserted here -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+  <script>
+    // Javascript code...
+    $(document).ready(function () {
+      // Get the value of the 'id' parameter from the URL
+      const urlParams = new URLSearchParams(window.location.search);
+
+      const id = urlParams.get('id'); // ID in hex format
+
+      const spreadsheetId = '1B0XZP71THdyZwCoipwMNGGYN_PSWjMU-Bz4LQThBq_E';
+      const sheetId = 'Sertifikat!A2:K50000'; // Jika menggunakan URL JSON feed, Anda memerlukan sheet ID
+      const api_key = 'AIzaSyDG5Kb9aSRrUB9IFUJ_8Sn-WdQDR9cU-GI'; // Jika menggunakan URL JSON feed, Anda memerlukan sheet ID
+
+      // API endpoint to retrieve data from Google Sheets based on the ID
+      const sheetURL = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetId}?alt=json&key=${api_key}`;
+
+
+      // API endpoint to retrieve data from Google Sheets based on the ID
+      // const sheetURL = `https://sheets.googleapis.com/v4/spreadsheets/1B0XZP71THdyZwCoipwMNGGYN_PSWjMU-Bz4LQThBq_E/values/A${id}:H${id}?key=AIzaSyDG5Kb9aSRrUB9IFUJ_8Sn-WdQDR9cU-GI`;
+
+      // Fetch data from Google Sheets
+      $.getJSON(sheetURL, function (data) {
+        const rowData = data.values.find(row => row[0] === id);
+        if (rowData) {
+          const htmlData = `<table>
+    <tr>
+        <td>Nomor Sertifikat</td>
+        <td>: </td>
+        <td>${rowData[1]}</td>
+    </tr>
+    <tr>
+        <td>Tanggal Sertifikat</td>
+        <td>: </td>
+        <td>${rowData[2]}</td>
+    </tr>
+    <tr>
+        <td>Penandatangan</td>
+        <td>: </td>
+        <td>${rowData[9]} - ${rowData[8]}</td>
+    </tr>
+    <tr>
+        <td>Nama Penerima Sertifikat</td>
+        <td>: </td>
+        <td>${rowData[5]}</td>
+    </tr>
+    <tr>
+        <td>Judul ${rowData[6]}</td>
+        <td>: </td>
+        <td>${rowData[7]}</td>
+    </tr>
+</table> `;          
+          $('#deteksi-data').html(htmlData);
+        } else {
+          $('#deteksi-data').html('<center><p>Data tidak ditemukan</p></center>');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
