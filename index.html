@@ -110,15 +110,23 @@
 
   <script>
     // Javascript code...
+       // Fungsi untuk membersihkan tag HTML
+function cleanHtmlTags(text) {
+  if (typeof text !== 'string') {
+    return text;
+  }
+  return text.replace(/<[^>]+>/g, '').replace(/<br\s*\/?>/gi, '');   
+}
+
     $(document).ready(function () {
       // Get the value of the 'id' parameter from the URL
       const urlParams = new URLSearchParams(window.location.search);
 
-      const id = urlParams.get('id'); // ID in hex format
+      const nim = urlParams.get('nim'); // Mengambil NIM dari parameter URL
 
-      const spreadsheetId = '1B0XZP71THdyZwCoipwMNGGYN_PSWjMU-Bz4LQThBq_E';
-      const sheetId = 'Sertifikat!A2:K50000'; // Jika menggunakan URL JSON feed, Anda memerlukan sheet ID
-      const api_key = 'AIzaSyDG5Kb9aSRrUB9IFUJ_8Sn-WdQDR9cU-GI'; // Jika menggunakan URL JSON feed, Anda memerlukan sheet ID
+      const spreadsheetId = '1RQJMyOqHpjRRm15HpGgdCOIfm0TNWXnBqTucqnepBhM'; 
+      const sheetId = 'Sertifikat!A2:K50000'; 
+      const api_key = 'AIzaSyCfA1ogeWgYt_zv9H4zimiaApNxZJk5SfA'; 
 
       // API endpoint to retrieve data from Google Sheets based on the ID
       const sheetURL = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetId}?alt=json&key=${api_key}`;
@@ -129,7 +137,7 @@
 
       // Fetch data from Google Sheets
       $.getJSON(sheetURL, function (data) {
-        const rowData = data.values.find(row => row[0] === id);
+        const rowData = data.values.find(row => row[4] === nim); // Mencari data berdasarkan NIM (kolom ke-3)
         if (rowData) {
           const htmlData = `<table>
     <tr>
@@ -153,7 +161,7 @@
         <td>${rowData[5]}</td>
     </tr>
     <tr>
-        <td>Judul ${rowData[6]}</td>
+        <td>Judul ${cleanHtmlTags(rowData[6])}</td>
         <td>: </td>
         <td>${rowData[7]}</td>
     </tr>
