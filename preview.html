@@ -1,214 +1,79 @@
+Anda benar, saya mohon maaf atas kesalahan informasi sebelumnya. Sepertinya Google Sheet yang di-publish ke web tidak mendukung format output JSON secara langsung.
+
+Alternatifnya, kita bisa menggunakan format CSV dan memprosesnya di JavaScript.
+
+Berikut kode HTML yang sudah disesuaikan untuk menggunakan data CSV:
+
+HTML
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sertifikat</title>
-  <!-- Load Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Load custom CSS -->
+  <title>Sertifikat Bebas Plagiasi - Fakultas Pertanian ULM</title>
+  <link id="favicon" rel="shortcut icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">   
+
   <style>
-    @font-face {
-      font-family: 'Cambria';
-      src: url('cambriab.ttf') format('truetype');
-      /* Add other font formats (e.g., woff, woff2) for cross-browser support */
-    }
-
-    body {
-      font-family: 'Cambria', serif; /* Use the defined font */
-      width: 100vw;
-      height: 100vh;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #f0f0f0;
-    }
-    
-    /* Screen view - Canvas with background */
-    .canvas {
-      width: 1077px;
-      height: 820px;
-      background-image: url('bg.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      border: 2px solid #ccc;
-    }
-
-    #qrcode-container {
-      text-align: center;
-position: absolute;
-  right: 15%;
-  top: 85%;
-  transform: translateY(-50%);
-      /* Mengatur posisi QR code di tengah secara horizontal */
-    }
-
-    #qrcode img {
-      width: 80px;
-      /* Mengatur lebar gambar QR code */
-      height: 80px;
-      /* Mengatur tinggi gambar QR code */
-      display: block;
-      margin: 0 auto;
-      /* Mengatur posisi gambar QR code di tengah container */
-    }
-
-    /* Print view - Background image for A4 landscape */
-    @media print {
-      html, body {
-        background-image: url('bg.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-		    size: A4 landscape;
-        height:100%; 
-    margin: 0 !important; 
-    padding: 0 !important;
-    overflow: hidden;
-      }
-	  
-      @page {
-        size: A4 landscape;
-        margin: 0;
-        padding: 0;
-        
-      }
-
-      .canvas {
-        border: none; /* Remove border in print view */
-		    background-image: none;
-      }
-
-      .certificate-content {
-        color: #000; /* Set text color for print view */
-      }
-     
-    }
-
-   
-
-    /* Add your custom styles for certificate content */
-    .certificate-content {
-      /* Add your styles here */
-      /* For example: */
-      font-size: 16px;
-      text-align: center;
-      margin-top: 180px;
-	  margin-left: 0px;
-	  word-wrap: break-word; /* Word-wrap teks yang panjang */
-    }
-    .certificate-content p {
-      margin-top: 5px; /* Atur jarak antar paragraf menjadi 10px */
-  margin-bottom: 10px; /* Atur jarak antar paragraf menjadi 10px */
-}
+    /* ... CSS styling ... */
   </style>
 </head>
-<body>
 
-  <div id="sertifikat-data">
-    <!-- Data will be dynamically inserted here -->
+<body>
+  <div class="background-image"></div>
+  <div class="content">
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><img src="logo.png" class="center" alt="Universitas Lambung Mangkurat">Sertifikat Bebas
+          Plagiasi<br>Fakultas Pertanian ULM</h5>
+
+        <div id="deteksi-data">
+          </div>
+
+      </div>
+    </div>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script> <!-- Library qrcode.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>   
+ <script>
+    $(document).ready(function   
+ () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');   
 
 
-<script>
-  // Javascript code...
-  function generatePDF() {
-    // Get the value of the 'pdf' parameter from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const pdfParam = urlParams.get('pdf');
+      const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSaEFqbhXyDbkIpR-F5O1bGTuSf9J98WwrhaoifXYVh8CLHujNBYuXGwK2mkl_SG4fOp1kyEq-vWMbU/pub?gid=1530630510&single=true&output=csv';
 
-    // Check if the 'pdf' parameter is 'yes'
-    if (pdfParam === 'yes') {
-      // Create a new instance of html2pdf
-     
-     
-      
-    }
-  }
+      Papa.parse(sheetURL, {
+        download: true,
+        header: true,
+        complete: function (results) {
+          const data = results.data;
+          const rowData = data.find(row => row.id === id); // Mencari baris data berdasarkan kolom 'id'
 
-  $(document).ready(function () {
-    // Get the value of the 'id' parameter from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-
-    const id = urlParams.get('id'); // ID in hex format
-    const spreadsheetId = '1B0XZP71THdyZwCoipwMNGGYN_PSWjMU-Bz4LQThBq_E';
-    const sheetId = 'Sertifikat!A2:K50000'; // Jika menggunakan URL JSON feed, Anda memerlukan sheet ID
-    const api_key = 'AIzaSyDG5Kb9aSRrUB9IFUJ_8Sn-WdQDR9cU-GI'; // Jika menggunakan URL JSON feed, Anda memerlukan sheet ID
-
-    // API endpoint to retrieve data from Google Sheets based on the ID
-    const sheetURL = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetId}?alt=json&key=${api_key}`;
-
-    // Fetch data from Google Sheets
-    $.getJSON(sheetURL, function (data) {
-
-      const rowData = data.values.find(row => row[0] === id);
-
-      if (rowData) {
-
-        const htmlData = `<div class="canvas">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="certificate-content"><br>
-      <h4><b>SERTIFIKAT BEBAS PLAGIASI</b></h4>
-      <p>NOMOR : ${rowData[1]}</p>
-      <p>Sertifikat ini diberikan kepada:</p>
-      <p style="text-transform: uppercase; font-weight: bold;"><h4><b>${rowData[5]}</b></h4></p>
-      <p>Dengan Judul ${rowData[6]} :<br>
-      ${rowData[7]}</p>
-      <p>Telah dideteksi tingkat plagiasinya dengan kriteria toleransi ≤ 20%, dan <br>dinyatakan Bebas dari Plagiasi.</p>
-      <p>Banjarmasin, ${rowData[2]}<br>
-      ${rowData[8]},</p>      
-     <br>
-<br>
-<br>
- <div id="qrcode-container">
-              <div id="qrcode"></div> <!-- Menambahkan div untuk menampilkan QR code -->
-            </div>
-      <p>${rowData[9]}<br>NIP ${rowData[10]}</p>     
-    </div>
-        </div>
-      </div>
-    </div>
-
-  </div>`;
-        $('#sertifikat-data').html(htmlData);
-
-        // Membuat QR code menggunakan qrcode.js berdasarkan URL browser saat ini
-        const qrCode = new QRCode(document.getElementById("qrcode"), {
-          text: "https://plagiasifaperta.github.io/sertifikat/?id=" + id, // Menggunakan URL browser saat ini sebagai teks QR code
-          width: 80,
-          height: 80
-        });
-       
-
-      
-
-      } else {
-        $('#sertifikat-data').html('<p>Data tidak ditemukan</p>');
-      }
+          if (rowData) {
+            const htmlData = `<table>
+              <tr>
+                <td>Nomor Sertifikat</td>
+                <td>: </td>
+                <td>${rowData.nomorsertifikat}</td>
+              </tr>
+              <tr>
+                <td>Tanggal Sertifikat</td>
+                <td>: </td>
+                <td>${rowData.tanggalsertifikat}</td>
+              </tr>
+              ... isi dengan data lain ...
+            </table>`;
+            $('#deteksi-data').html(htmlData);
+          } else {
+            $('#deteksi-data').html('<center><p>Data tidak ditemukan</p></center>');
+          }
+        }
+      });
     });
-
-    generatePDF();
-  });
-
- 
-
-  
-</script>
-
-<script>
-  // Fungsi untuk generate PDF
-  
-  
-
- 
-</script>
+  </script>
 </body>
+
 </html>
