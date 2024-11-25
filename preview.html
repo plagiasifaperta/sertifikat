@@ -9,13 +9,13 @@
   <!-- Load custom CSS -->
   <style>
     @font-face {
-      font-family: 'Agency FB';
-      src: url('agencyfb_bold.ttf') format('truetype');
-      /* Add other font formats (e.g., woff, woff2) for cross-browser support */
-    }
+  font-family: 'Agency FB';
+  src: url('AgencyFB-Bold.ttf') format('truetype');
+  font-weight: bold; 
+}
 
     body {
-      font-family: 'Cambria', serif; /* Use the defined font */
+      font-family: 'Arial Narrow', serif; /* Use the defined font */
       width: 100vw;
       height: 100vh;
       margin: 0;
@@ -82,16 +82,7 @@ position: absolute;
 		    background-image: none;
       }
 
-      .certificate-content h4 {  /* Untuk judul sertifikat */
-  font-family: 'Agency FB', sans-serif;
-  font-size: 46px;
-}
-
-.certificate-content p {  /* Untuk teks lainnya */
-  font-family: 'Arial Narrow', sans-serif;
-  font-size: 18px;
-}
-
+    
       .certificate-content {
         color: #000; /* Set text color for print view */
       }
@@ -104,9 +95,9 @@ position: absolute;
     .certificate-content {
       /* Add your styles here */
       /* For example: */
-      font-size: 16px;
+      font-size: 20px;
       text-align: center;
-      margin-top: 180px;
+      margin-top: 100px;
 	  margin-left: 0px;
 	  word-wrap: break-word; /* Word-wrap teks yang panjang */
     }
@@ -114,6 +105,27 @@ position: absolute;
       margin-top: 5px; /* Atur jarak antar paragraf menjadi 10px */
   margin-bottom: 10px; /* Atur jarak antar paragraf menjadi 10px */
 }
+
+.certificate-content .title { /* Style untuk judul sertifikat */
+  font-family: 'Agency FB', sans-serif;
+  font-size: 58px;
+  text-align: center;
+}
+
+.certificate-content .recipient { /* Style untuk nama penerima */
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-size: 28px; /* Sesuaikan ukuran font sesuai kebutuhan */
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.certificate-content .signature { /* Style untuk tanda tangan */
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+
   </style>
 </head>
 <body>
@@ -135,34 +147,33 @@ position: absolute;
 
           if (rowData) {
             const htmlData = `<div class="canvas">
-              <div class="container">
-                <div class="row">
-                  <div class="col-12">
-                    <div class="certificate-content"><br>
-                      <h4><b>SERTIFIKAT BEBAS PLAGIASI</b></h4>
-                      <p>NOMOR : ${rowData[1]}</p> 
-                      <p>Sertifikat ini diberikan kepada:</p>
-                      <p style="text-transform: uppercase; font-weight: bold;"><h4><b>${rowData[5]}</b></h4></p>
-                      <p>Dengan Judul ${rowData[6]} :<br>
-                      ${rowData[7]}</p> 
-                      <p>Telah dideteksi tingkat plagiasinya dengan kriteria toleransi ≤ 20%, dan <br>dinyatakan Bebas dari Plagiasi.</p>
-                      <p>Banjarbaru, ${rowData[2]}<br> 
-                      ${rowData[8]},</p> 
-                      <br>
-                      <br>
-                      <br>
-                      <div id="qrcode-container">
-                        <div id="qrcode"></div> 
-                      </div>
-                      <p>${rowData[9]}<br>NIP ${rowData[10]}</p> 
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>`;
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="certificate-content">       
+          <h1 class="title">SERTIFIKAT BEBAS PLAGIASI</h1> 
+          <p>NOMOR : ${rowData[1]}</p>
+          <p>Sertifikat ini diberikan kepada:</p>
+          <h2 class="recipient">${rowData[5]}</h2> 
+          <p>Dengan Judul ${rowData[6]} :<br>
+          ${rowData[7]}</p>
+          <p>Telah dideteksi tingkat plagiasinya dengan kriteria toleransi ≤ 20%, dan <br>dinyatakan Bebas dari Plagiasi.</p>
+          <p>Banjarbaru, ${rowData[2]}<br>
+          ${rowData[8]},</p>        
+          <br>
+          <br>
+          <div id="qrcode-container">
+            <div id="qrcode"></div>
+          </div>
+          <p class="signature">${rowData[9]}<br>NIP ${rowData[10]}</p> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`;
             $('#sertifikat-data').html(htmlData);
             const qrCode = new QRCode(document.getElementById("qrcode"), {
-              text: "https://pps-ulm.github.io/cekse/?nim=" + nim, 
+              text: "https://plagiasifaperta.github.io/sertifikat/?nim=" + nim, 
               width: 80,
               height: 80
             });
