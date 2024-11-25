@@ -150,11 +150,7 @@ function cleanHtmlTags(text) {
         <td>: </td>
         <td>${rowData[2]}</td>
     </tr>
-    <tr>
-        <td>Penandatangan</td>
-        <td>: </td>
-       <td>${rowData[9]} - ${rowData[8]}</td>
-    </tr>
+  
     <tr>
         <td>Nama Penerima Sertifikat</td>
         <td>: </td>
@@ -165,6 +161,14 @@ function cleanHtmlTags(text) {
         <td>: </td>
         <td>${rowData[7]}</td>
     </tr>
+
+      <tr>
+        <td>Penandatangan</td>
+        <td>: </td>
+       <td>${rowData[8]}<br>
+       ${rowData[9]}</td>
+    </tr>
+    
 </table> `;          
           $('#deteksi-data').html(htmlData);
         } else {
