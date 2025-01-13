@@ -3,7 +3,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2;
+    background-color: #5CB338;
 }
 
 .content {
@@ -15,7 +15,7 @@ body {
 #deteksi-data {
     display: inline-block;
     padding: 20px;
-    background-color: rgba(181, 228, 140, 0.7);
+    background-color: #ECE852;
     /* Menambahkan latar belakang transparan */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -46,7 +46,7 @@ h1 {
     /* Mengatur posisi card menjadi tengah */
     margin-top: 20px;
     /* Memberi jarak antara box card dengan card */
-    background-color: #f2f2f2;
+    background-color: #FFC145;
     /* Menambahkan latar belakang transparan */
 }
 
@@ -70,7 +70,7 @@ h1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 25%;
+    width: 15%;
     /* Ubah ukuran logo di sini */
     padding-top: 10px;
     padding-bottom: 10px;
