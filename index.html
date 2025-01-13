@@ -5,89 +5,17 @@
   <title>Sertifikat Bebas Plagiasi - Fakultas Pertanian ULM</title>
   <link id="favicon" rel="shortcut icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    /* Additional CSS styling... */
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #f2f2f2;
-    }
-
-    .content {
-      position: relative;
-      top: 0;
-      width: 100%;
-    }
-
-    #deteksi-data {
-      display: inline-block;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.7);
-      /* Menambahkan latar belakang transparan */
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      /* Menambahkan shadow */
-
-      margin: 0 auto;
-      /* Mengatur posisi box card menjadi tengah */
-    }
-
-    #deteksi-data p {
-      word-wrap: break-word;
-      /* Memastikan teks dapat di-wrap secara otomatis */
-    }
-
-    h1 {
-      font-size: 30px;
-      font-weight: bold;
-      margin-top: 20px;
-      /* Memberi jarak antara box card dengan judul card */
-    }
-
-    .card {
-      width: 50%;
-      /* Mengatur lebar card hingga 55% dari lebar layar */
-      margin: 0 auto;
-      /* Mengatur posisi card menjadi tengah */
-      margin-top: 20px;
-      /* Memberi jarak antara box card dengan card */
-      background-color: rgba(41, 119, 11, 0.877);
-      /* Menambahkan latar belakang transparan */
-    }
-
-    .card-body {
-      padding-top: 20px;
-      padding-left: 20px;
-      padding-right: 20px;
-      padding-bottom: 20px;
-    }
-
-    .card-title {
-      text-align: center;
-      /* Mengatur posisi judul card di tengah */
-      color: rgba(255, 255, 255, 0.877);
-      /* Menambahkan latar belakang transparan */
-    }
-
-    .center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 10%;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <div class="content">
-
-        <div class="card">
+    <div class="card">
       <div class="card-body">
         <h5 class="card-title"><img src="logo.png" class="center" alt="Universitas Lambung Mangkurat">Sertifikat Bebas Plagiasi<br>Fakultas Pertanian ULM</h5>
 
         <div id="deteksi-data">
-                  </div>
-
+        </div>
       </div>
     </div>
   </div>
@@ -97,12 +25,27 @@
   <script>
     // Javascript code...
        // Fungsi untuk membersihkan tag HTML
-function cleanHtmlTags(text) {
-  if (typeof text !== 'string') {
-    return text;
-  }
-  return text.replace(/<[^>]+>/g, '').replace(/<br\s*\/?>/gi, '');   
-}
+    function cleanHtmlTags(text) {
+        if (typeof text !== 'string') {
+            return text;
+          }
+          return text.replace(/<[^>]+>/g, '').replace(/<br\s*\/?>/gi, '');   
+    }
+
+    function formatDate(dateString) {
+        const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+        const dateParts = dateString.split(" ");
+        const day = dateParts[0];
+        const monthIndex = months.findIndex(month => month.toLowerCase() === dateParts[1].toLowerCase());
+        const year = dateParts[2];
+        
+        if (monthIndex === -1) {
+            return dateString; // Return original string if month is invalid
+        }
+        
+        return `${day} ${months[monthIndex]} ${year}`;
+    }
+    
 
     $(document).ready(function () {
       // Get the value of the 'id' parameter from the URL
@@ -125,6 +68,7 @@ function cleanHtmlTags(text) {
       $.getJSON(sheetURL, function (data) {
         const rowData = data.values.find(row => row[4] === nim); // Mencari data berdasarkan NIM (kolom ke-3)
         if (rowData) {
+            const formattedDate = formatDate(rowData[2]);
           const htmlData = `<table>
     <tr>
         <td>Nomor Sertifikat</td>
@@ -134,7 +78,7 @@ function cleanHtmlTags(text) {
     <tr>
         <td>Tanggal Sertifikat</td>
         <td>: </td>
-        <td>${rowData[2]}</td>
+        <td>${formattedDate}</td>
     </tr>
   
     <tr>
