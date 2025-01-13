@@ -80,3 +80,75 @@ h1 {
     color: black;
     /* Atur warna teks menjadi hitam */
 }
+
+/* Media Queries untuk Mobile */
+@media (max-width: 768px) { /* Untuk layar dengan lebar maksimum 768px (umumnya tablet dan ponsel) */
+    .card {
+        width: 95%; /* Lebar card hampir memenuhi layar */
+        max-width: none; /* Hapus max-width agar card bisa selebar layar */
+        margin-top: 10px; /* Kurangi margin atas */
+    }
+
+    .center {
+        width: 25%; /* Perbesar logo untuk layar kecil */
+    }
+
+    .card-title {
+        font-size: 16px; /* Perkecil ukuran font judul */
+        margin-bottom: 5px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    #deteksi-data {
+        font-size: 14px; /* Perkecil ukuran font konten */
+        padding: 10px;
+    }
+    .card-body {
+        padding: 10px;
+    }
+    #deteksi-data table tr td {
+        font-size: 14px;
+    }
+
+}
+
+@media (max-width: 480px) { /* Untuk layar yang lebih kecil (ponsel kecil) */
+    .center {
+        width: 30%; /* Perbesar lagi logo */
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .card-title {
+        font-size: 14px; /* Perkecil lagi ukuran font judul */
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    #deteksi-data {
+        font-size: 12px; /* Perkecil lagi ukuran font konten */
+    }
+
+    .card-body {
+        padding: 5px;
+    }
+
+    #deteksi-data table tr td {
+        font-size: 12px;
+        padding-right: 2px;
+    }
+
+    #deteksi-data table tr td:nth-child(2){
+        padding-right: 2px;
+        padding-left: 2px;
+    }
+
+    #deteksi-data table tr td:first-child{
+        padding-right: 2px;
+    }
+}
