@@ -3,7 +3,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #5CB338;
+    background-color: #f7f3e8; /* Krem muda */
 }
 
 .content {
@@ -15,82 +15,75 @@ body {
 #deteksi-data {
     display: inline-block;
     padding: 20px;
-    background-color: #ECE852;
-    /* Menambahkan latar belakang transparan */
+    background-color: #ffdb58; /* Kuning, sesuaikan */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    /* Menambahkan shadow */
     margin: 0 auto;
-    /* Mengatur posisi box card menjadi tengah */
-    color: black;
-    /* Atur warna teks menjadi hitam */
+    color: #222; /* Coklat tua, hampir hitam */
 }
 
 #deteksi-data p {
     word-wrap: break-word;
-    /* Memastikan teks dapat di-wrap secara otomatis */
 }
 
 h1 {
     font-size: 30px;
     font-weight: bold;
     margin-top: 20px;
-    /* Memberi jarak antara box card dengan judul card */
 }
 
 .card {
     width: 80%;
     max-width: 600px;
-    /* Mengatur lebar card hingga 55% dari lebar layar */
     margin: 0 auto;
-    /* Mengatur posisi card menjadi tengah */
     margin-top: 20px;
-    /* Memberi jarak antara box card dengan card */
-    background-color: #FFC145;
-    /* Menambahkan latar belakang transparan */
+    background-color: #ffdb58; /* Kuning, sesuaikan */
 }
 
 .card-body {
-    padding-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    color: black;
-    /* Atur warna teks menjadi hitam */
+    padding: 20px;
+    color: #222; /* Coklat tua, hampir hitam */
 }
 
 .card-title {
     text-align: center;
-    /* Mengatur posisi judul card di tengah */
-    color: black;
-    /* Menambahkan latar belakang transparan */
+    color: #222; /* Coklat tua, hampir hitam */
+    margin-bottom: 15px; /* Jarak dengan teks di bawahnya */
 }
 
 .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 15%;
-    /* Ubah ukuran logo di sini */
+    width: 10%; /* Ukuran logo, sesuaikan */
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-#deteksi-data table tr td {
-    color: black;
-    /* Atur warna teks menjadi hitam */
+/* Tampilan data tanpa tabel */
+.data-item {
+    margin-bottom: 10px;
+}
+
+.data-label {
+    display: block;
+    font-weight: bold;
+}
+
+.data-value {
+    display: block;
+    margin-left: 0; /* Hapus margin left bawaan tabel */
 }
 
 /* Media Queries untuk Mobile */
-@media (max-width: 768px) { /* Untuk layar dengan lebar maksimum 768px (umumnya tablet dan ponsel) */
+@media (max-width: 768px) {
     .card {
-        width: 95%; /* Lebar card hampir memenuhi layar */
-        max-width: none; /* Hapus max-width agar card bisa selebar layar */
+        width: 94%; /* Lebar card di mobile */
         margin-top: 10px; /* Kurangi margin atas */
     }
 
     .center {
-        width: 25%; /* Perbesar logo untuk layar kecil */
+        width: 20%; /* Perbesar logo untuk layar kecil */
     }
 
     .card-title {
@@ -99,56 +92,37 @@ h1 {
     }
 
     h1 {
-        font-size: 24px;
-    }
-
-    #deteksi-data {
-        font-size: 14px; /* Perkecil ukuran font konten */
-        padding: 10px;
-    }
-    .card-body {
-        padding: 10px;
-    }
-    #deteksi-data table tr td {
-        font-size: 14px;
-    }
-
-}
-
-@media (max-width: 480px) { /* Untuk layar yang lebih kecil (ponsel kecil) */
-    .center {
-        width: 30%; /* Perbesar lagi logo */
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-
-    .card-title {
-        font-size: 14px; /* Perkecil lagi ukuran font judul */
-    }
-
-    h1 {
         font-size: 20px;
     }
 
     #deteksi-data {
-        font-size: 12px; /* Perkecil lagi ukuran font konten */
+        font-size: 14px; /* Perkecil ukuran font konten */
+        padding: 10px; /* Kurangi padding */
     }
 
     .card-body {
-        padding: 5px;
+        padding: 10px; /* Kurangi padding */
     }
 
-    #deteksi-data table tr td {
-        font-size: 12px;
-        padding-right: 2px;
+    /* Styling data tanpa tabel */
+    .data-item {
+        margin-bottom: 5px; /* Kurangi margin antar item */
     }
 
-    #deteksi-data table tr td:nth-child(2){
-        padding-right: 2px;
-        padding-left: 2px;
+    .data-label {
+        font-size: 14px;
     }
 
-    #deteksi-data table tr td:first-child{
-        padding-right: 2px;
+    .data-value {
+        font-size: 14px;
     }
+}
+
+@media (max-width: 480px) {
+  .center{
+    width: 25%;
+  }
+  .card-title{
+    font-size: 14px;
+  }
 }
