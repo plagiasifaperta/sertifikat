@@ -1,0 +1,71 @@
+/* style.css */
+/* Additional CSS styling... */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+    }
+
+    .content {
+      position: relative;
+      top: 0;
+      width: 100%;
+    }
+
+    #deteksi-data {
+      display: inline-block;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.7);
+      /* Menambahkan latar belakang transparan */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      /* Menambahkan shadow */
+
+      margin: 0 auto;
+      /* Mengatur posisi box card menjadi tengah */
+    }
+
+    #deteksi-data p {
+      word-wrap: break-word;
+      /* Memastikan teks dapat di-wrap secara otomatis */
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: bold;
+      margin-top: 20px;
+      /* Memberi jarak antara box card dengan judul card */
+    }
+
+    .card {
+      width: 80%;
+      max-width: 600px;
+      /* Mengatur lebar card hingga 55% dari lebar layar */
+      margin: 0 auto;
+      /* Mengatur posisi card menjadi tengah */
+      margin-top: 20px;
+      /* Memberi jarak antara box card dengan card */
+      background-color: rgba(41, 119, 11, 0.877);
+      /* Menambahkan latar belakang transparan */
+    }
+
+    .card-body {
+      padding-top: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 20px;
+    }
+
+    .card-title {
+      text-align: center;
+      /* Mengatur posisi judul card di tengah */
+      color: rgba(255, 255, 255, 0.877);
+      /* Menambahkan latar belakang transparan */
+    }
+
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 10%;
+    }
