@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Sertifikat Bebas Plagiasi - Fakultas Pertanian ULM</title>
   <link id="favicon" rel="shortcut icon" type="image/png" href="logo.png">
@@ -14,7 +13,6 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title"><img src="logo.png" class="center" alt="Universitas Lambung Mangkurat">Sertifikat Bebas Plagiasi<br>Fakultas Pertanian ULM</h5>
-
         <div id="deteksi-data">
         </div>
       </div>
@@ -72,24 +70,24 @@
                 const formattedDate = formatDate(rowData[2]);
           const htmlData = `
                 <div class="data-item">
-                    <span class="data-label">Nomor Sertifikat</span>
-                    <span class="data-value">: ${rowData[1]}</span>
+                    <span class="data-label">Nomor Sertifikat : </span>
+                    <span class="data-value">${rowData[1]}</span>
                 </div>
                 <div class="data-item">
-                    <span class="data-label">Tanggal Sertifikat</span>
-                    <span class="data-value">: ${formattedDate}</span>
+                    <span class="data-label">Tanggal Sertifikat :</span>
+                    <span class="data-value">${formattedDate}</span>
                 </div>
                 <div class="data-item">
-                    <span class="data-label">Nama Penerima Sertifikat</span>
-                    <span class="data-value">: ${rowData[5]}</span>
+                    <span class="data-label">Nama Penerima Sertifikat :</span>
+                    <span class="data-value">${rowData[5]}</span>
                 </div>
                 <div class="data-item">
-                    <span class="data-label">Judul ${cleanHtmlTags(rowData[6])}</span>
-                    <span class="data-value">: ${rowData[7]}</span>
+                    <span class="data-label">Judul ${cleanHtmlTags(rowData[6])} :</span>
+                    <span class="data-value">${rowData[7]}</span>
                 </div>
                 <div class="data-item">
-                    <span class="data-label">Penandatangan</span>
-                    <span class="data-value">: ${rowData[8]}<br>${rowData[9]}</span>
+                    <span class="data-label">Penandatangan : </span>
+                    <span class="data-value">${rowData[8]}<br>${rowData[9]}</span>
                 </div>
  `;          
           $('#deteksi-data').html(htmlData);
