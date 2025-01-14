@@ -3,7 +3,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #f7f3e8; /* Krem muda */
+    background-color: #A5D6A7; /* Hijau daun sangat muda */
 }
 
 .content {
@@ -15,11 +15,11 @@ body {
 #deteksi-data {
     display: inline-block;
     padding: 20px;
-    background-color: #ffdb58; /* Kuning, sesuaikan */
+    background-color: #FFF9C4; /* Kuning pucat */
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow hitam transparan 20% */
     margin: 0 auto;
-    color: #222; /* Coklat tua, hampir hitam */
+    color: #222;
 }
 
 #deteksi-data p {
@@ -30,6 +30,7 @@ h1 {
     font-size: 30px;
     font-weight: bold;
     margin-top: 20px;
+    color: #388E3C; /* Hijau daun utama */
 }
 
 .card {
@@ -37,25 +38,27 @@ h1 {
     max-width: 600px;
     margin: 0 auto;
     margin-top: 20px;
-    background-color: #ffdb58; /* Kuning, sesuaikan */
+    background-color: #66BB6A; /* Hijau daun lebih terang */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow hitam transparan 20% */
 }
 
 .card-body {
     padding: 20px;
-    color: #222; /* Coklat tua, hampir hitam */
+    color: #222;
 }
 
 .card-title {
     text-align: center;
-    color: #222; /* Coklat tua, hampir hitam */
-    margin-bottom: 15px; /* Jarak dengan teks di bawahnya */
+    color: #FFFDE7; /* Kuning sangat pucat */
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Shadow tipis untuk teks */
 }
 
 .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 10%; /* Ukuran logo, sesuaikan */
+    width: 10%;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -68,26 +71,27 @@ h1 {
 .data-label {
     display: block;
     font-weight: bold;
+    color: #388E3C;
 }
 
 .data-value {
     display: block;
-    margin-left: 0; /* Hapus margin left bawaan tabel */
+    margin-left: 0;
 }
 
 /* Media Queries untuk Mobile */
 @media (max-width: 768px) {
     .card {
-        width: 94%; /* Lebar card di mobile */
-        margin-top: 10px; /* Kurangi margin atas */
+        width: 94%;
+        margin-top: 10px;
     }
 
     .center {
-        width: 20%; /* Perbesar logo untuk layar kecil */
+        width: 20%;
     }
 
     .card-title {
-        font-size: 16px; /* Perkecil ukuran font judul */
+        font-size: 16px;
         margin-bottom: 5px;
     }
 
@@ -96,17 +100,16 @@ h1 {
     }
 
     #deteksi-data {
-        font-size: 14px; /* Perkecil ukuran font konten */
-        padding: 10px; /* Kurangi padding */
+        font-size: 14px;
+        padding: 10px;
     }
 
     .card-body {
-        padding: 10px; /* Kurangi padding */
+        padding: 10px;
     }
 
-    /* Styling data tanpa tabel */
     .data-item {
-        margin-bottom: 5px; /* Kurangi margin antar item */
+        margin-bottom: 5px;
     }
 
     .data-label {
@@ -119,10 +122,11 @@ h1 {
 }
 
 @media (max-width: 480px) {
-  .center{
-    width: 25%;
-  }
-  .card-title{
-    font-size: 14px;
-  }
+    .center {
+        width: 25%;
+    }
+
+    .card-title {
+        font-size: 14px;
+    }
 }
